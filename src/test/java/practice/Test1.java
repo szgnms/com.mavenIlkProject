@@ -3,6 +3,8 @@ package practice;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,7 +34,8 @@ public class Test1 {
 @Test
     public void test()
 {
-    driver.get("https://amazon.com");
+    driver.get("https://facebook.com");
+    driver.findElement(By.xpath("(//div[@class='_6ltg'])[2]")).click();
 
 }
 }
