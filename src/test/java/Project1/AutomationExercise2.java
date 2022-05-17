@@ -14,7 +14,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.time.Duration;
 
-public class AutomationExcersize2 {
+public class AutomationExercise2 {
   WebDriver driver;
     ChromeOptions options;
     @Before

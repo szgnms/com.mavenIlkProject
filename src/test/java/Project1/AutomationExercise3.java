@@ -16,11 +16,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.time.Duration;
 
-import static Project1.Excersize01.driver;
 
-
-
-public class Excercise3 {
+public class AutomationExercise3 {
 
     //1. Launch browser
     //2. Navigate to url 'http://automationexercise.com'

@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.time.Duration;
 
-public class AutomationExercises {
+public class AutomationExercise1 {
     public static void main(String[] args) {
 
         WebDriverManager.chromedriver().setup();
