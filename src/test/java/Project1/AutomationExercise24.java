@@ -143,8 +143,8 @@ public class AutomationExercise24 {
         driver.findElement(By.xpath(" //a[@class='btn btn-default check_out']")).click();
         Thread.sleep(2000);
         Path filePath = Path.of("C:\\Users\\ms\\Downloads\\invoice.txt");
-        String content = Files.readString(Path.of(filePath.toString()));
-        System.out.println(content);
+        String invoice = Files.readString(Path.of(filePath.toString()));
+        System.out.println(invoice);
 
         //20. Click 'Continue' button
         driver.findElement(By.xpath("//a[@class='btn btn-primary']")).click();
