@@ -11,26 +11,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.Duration;
 
-public class Excersize26 {
-
-    //2. Navigate to url 'http://automationexercise.com'
-    //3. Verify that home page is visible successfully
-    //4. Scroll down page to bottom
-    //5. Verify 'SUBSCRIPTION' is visible
-    //6. Scroll up page to top
-    //7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
-
+public class AutomationExercise17 {
     WebDriver driver;
     ChromeOptions options;
 
     @Before
-    public void setup() {
-
+    public void before() {
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addExtensions(new File("C:\\Program Files\\Google\\Chrome\\Application\\101.0.4951.67\\XPath-Plugin.crx"));
@@ -40,8 +32,11 @@ public class Excersize26 {
         //1. Launch browser
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+    }
 
-
+    @After
+    public void tearDown() {
+        driver.close();
     }
 
     @Test
@@ -49,25 +44,26 @@ public class Excersize26 {
         //2. Navigate to url 'http://automationexercise.com'
         driver.get("http://automationexercise.com");
         //3. Verify that home page is visible successfully
-        WebElement homePage = driver.findElement(By.xpath("//body"));
-        Assert.assertTrue(homePage.isDisplayed());
-        //4. Scroll down page to bottom
+        WebElement home = driver.findElement(By.xpath(" //section[@id='slider']//div[@class='item active']//div[1]"));
+        Assert.assertTrue(home.isDisplayed());
+        //4. Add products to cart
         Robot rbt = new Robot();
-        rbt.keyPress(KeyEvent.VK_END);
-        Thread.sleep(2000);
-        //5. Verify 'SUBSCRIPTION' is visible
-        WebElement subs = driver.findElement(By.xpath("//h2[normalize-space()='Subscription']"));
-        Assert.assertTrue(subs.isDisplayed());
-        //6. Scroll up page to top
+        rbt.mouseWheel(4);
+        driver.findElement(By.xpath("(//a[@class='btn btn-default add-to-cart'])[1]")).click();
+        driver.findElement(By.xpath("//button[@class='btn btn-success close-modal btn-block']")).click();
+        //5. Click 'Cart' button
         rbt.keyPress(KeyEvent.VK_HOME);
-        //7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
-        WebElement full = driver.findElement(By.xpath("//div[@class='item active']//h2[contains(text(),'Full-Fledged practice website for Automation Engin')]"));
-        Assert.assertTrue(full.isDisplayed());
+        driver.findElement(By.xpath("(//a[@href='/view_cart'])[1]")).click();
+        //6. Verify that cart page is displayed
+        WebElement cartPage = driver.findElement(By.xpath("//li[@class='active']"));
+        Assert.assertTrue(cartPage.isDisplayed());
+        //7. Click 'X' button corresponding to particular product
+        driver.findElement(By.xpath("//i[@class='fa fa-times']")).click();
+        //8. Verify that product is removed from the cart
+        Thread.sleep(2000);
+        WebElement verifyRemove = driver.findElement(By.xpath("//b[normalize-space()='Cart is empty!']"));
+        Assert.assertTrue(verifyRemove.isDisplayed());
 
-    }
 
-    @After
-    public void close() {
-        driver.close();
     }
 }

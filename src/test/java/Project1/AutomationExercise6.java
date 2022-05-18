@@ -64,9 +64,8 @@ public class AutomationExercise6 {
         driver.findElement(By.xpath("//input[@placeholder='Subject']")).sendKeys("test");
         driver.findElement(By.xpath("//textarea[@id='message']")).sendKeys("testting my test");
         //7. Upload file
-       WebElement upload= driver.findElement(By.xpath("//input[@name='upload_file']"));
-       upload.sendKeys("C:\\Users\\ms\\Downloads\\XPath.crx");
-       driver.findElement(By.xpath("//input[@name='upload_file']"));
+        WebElement upload= driver.findElement(By.xpath("//input[@name='upload_file']"));
+        upload.sendKeys("C:\\Users\\ms\\Downloads\\XPath.crx");
         //8. Click 'Submit' button
         driver.findElement(By.xpath("//input[@name='submit']")).click();
         //9. Click OK button
